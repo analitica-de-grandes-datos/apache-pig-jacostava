@@ -20,5 +20,5 @@ datos = LOAD 'data.tsv' AS
           lista:map[]);
 
 datos = FOREACH datos GENERATE letra, SIZE(tupla) as cant1, SIZE(lista) as cant2;
-datos = ORDER v BY letra, cant1, cant2;
+datos = ORDER datos BY letra, cant1, cant2;
 STORE datos INTO 'output' USING PigStorage(',');
