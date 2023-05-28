@@ -18,4 +18,4 @@ u = LOAD 'data.tsv' USING PigStorage('\t')
         numero:INT);
 
 y = ORDER u BY letra, numero;
-STORE y INTO "output" USING PigStorage(',');
+STORE y INTO 'output' USING PigStorage(',');

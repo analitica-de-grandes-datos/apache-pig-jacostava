@@ -16,7 +16,6 @@ u = LOAD 'data.tsv' USING PigStorage('\t')
         AS(letra:CHARARRAY,
         fecha:CHARARRAY,
         numero:INT);
-DUMP u;
 y = GROUP u BY $0;
-Z = FOREACH y GENERATE $0, COUNT($1);
-store z into 'output';
+z = FOREACH y GENERATE $0, COUNT($1);
+store z into 'output' USING PigStorage(',');
