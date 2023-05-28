@@ -18,6 +18,7 @@ datos = LOAD 'data.tsv' AS
           tupla:bag{},
           lista:map[]);
 
-datos = FOREACH datos GENERATE FLATTEN(lista) as lista_sep;
-datos = FOREACH (GROUP datos BY lista_sep) GENERATE group,COUNT(datos.lista_sep);
+datos = FOREACH datos GENERATE FLATTEN(lista) as listasep;
+
+datos = FOREACH (GROUP datos BY listasep) GENERATE group,COUNT(datos.listasep);
 STORE datos INTO 'output' USING PigStorage(',');
