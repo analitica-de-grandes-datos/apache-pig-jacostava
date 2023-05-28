@@ -19,5 +19,5 @@ datos = LOAD 'data.tsv' AS
 
 datos = FOREACH datos GENERATE FLATTEN(tupla) as flatten_letra;
 
-datos = FOREACH (GROUP datos BY flatten_letra) GENERATE group,COUNT(data.flatten_letra);
+datos = FOREACH (GROUP datos BY flatten_letra) GENERATE group,COUNT(datos.flatten_letra);
 STORE datos INTO 'output' USING PigStorage(',');
