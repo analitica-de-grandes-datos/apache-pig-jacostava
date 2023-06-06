@@ -16,12 +16,12 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
-data = LOAD 'data.tsv' AS 
+datos = LOAD 'data.tsv' AS 
         ( letra:charArray,
           tupla:bag{},
           lista:map[]);
 
-data = FOREACH data GENERATE FLATTEN(tupla) AS letra, FLATTEN(lista) AS lisletras;
-grupo = GROUP data by (letra,lisletras);
-salida = FOREACH grupo GENERATE group, COUNT(data);
+datos = FOREACH datos GENERATE FLATTEN(tupla) AS letra, FLATTEN(lista) AS lisletras;
+grupo = GROUP datos by (letra,lisletras);
+salida = FOREACH grupo GENERATE group, COUNT(datos);
 STORE salida INTO 'output' USING PigStorage(',');
