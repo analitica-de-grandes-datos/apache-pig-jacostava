@@ -21,7 +21,7 @@ datos = LOAD 'data.csv' USING PigStorage(',')
            col5:charArray,
            col6:INT);
 
-años = FOREACH datos GENERATE SUBSTRING(col4,0,4) AS año;
-grupo = GROUP años BY año;
-cuenta_años = FOREACH grupo GENERATE group, COUNT(años);
-STORE cuenta_años INTO 'output' USING PigStorage(',');
+years = FOREACH datos GENERATE SUBSTRING(col4,0,4) AS year;
+grouped = GROUP years BY year;
+year_count = FOREACH grouped GENERATE group, COUNT(years);
+STORE year_count INTO 'output' USING PigStorage(',');

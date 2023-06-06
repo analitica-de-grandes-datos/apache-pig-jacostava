@@ -40,6 +40,6 @@ datos = LOAD 'data.csv' USING PigStorage(',')
            col5:charArray,
            col6:INT);
 
-datos = FOREACH data GENERATE col3, UPPER(col3), LOWER(col3);
-datos = ORDER data by col3;
+datos = FOREACH datos GENERATE col3, UPPER(col3), LOWER(col3);
+datos = ORDER datos by col3;
 STORE datos INTO 'output' USING PigStorage(',');
